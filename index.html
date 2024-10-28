@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Section with 3D Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .shoes-section {
+            height: 100vh;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;
+        }
+        @keyframes autoRun {
+            from {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }
+            to {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+        .slider .item {
+            position: absolute;
+            inset: 0;
+            transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                translateZ(550px);
+        }
+        .slider .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Add other styles for your site */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Our Shoes Store</h1>
+    <p>Scroll down to see our latest collection of shoes.</p>
+</div>
+
+<div class="shoes-section">
+    <div class="slider" style="--quantity: 10">
+        <div class="item" style="--position: 1"><img src="images/shoe1.jpg" alt="Shoe 1"></div>
+        <div class="item" style="--position: 2"><img src="images/shoe2.jpg" alt="Shoe 2"></div>
+        <div class="item" style="--position: 3"><img src="images/shoe3.jpg" alt="Shoe 3"></div>
+        <!-- Add more items as needed -->
+    </div>
+</div>
+
+<div class="container">
+    <h2>More About Our Shoes</h2>
+    <p>Our shoes are crafted with care...</p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
